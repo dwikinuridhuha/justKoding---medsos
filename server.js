@@ -1,19 +1,12 @@
 import express from "express";
+import router from "./routes/auth.route.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+app.use(express.json())
 
-app.post("/api/auth/register", (req, res) => {
-    res.send("register");
-})
-
-app.post("/api/auth/login", (req, res) => {
-    res.send("Ini end point login");
-})
+app.use("/api/auth", router);
 
 app.listen(port, () => {
     console.log("Listening on port " + port);
